@@ -129,6 +129,11 @@ FString EGDDebugContainer::GetPropertyValueAsString(UObject* DebugObject, FPrope
 		FText Value = TextProp->GetPropertyValue_InContainer(DebugObject);
 		return *Value.ToString();
 	}
+	if (FStrProperty* StrProp = CastField<FStrProperty>(Property))
+	{
+		FString Value = StrProp->GetPropertyValue_InContainer(DebugObject);
+		return *Value;
+	}
 
 	return "";
 }
